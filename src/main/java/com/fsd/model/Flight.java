@@ -1,6 +1,6 @@
 package com.fsd.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="flight")
@@ -29,10 +31,12 @@ public class Flight {
 	private String arrivalPort;
 	
 	@Column(name="departureTime")
-	private LocalTime departureTime;
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime departureTime;
 	
 	@Column(name="arrivalTime")
-	private LocalTime arrivalTime;
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime arrivalTime;
 
 	public String getFlightNumber() {
 		return flightNumber;
@@ -58,19 +62,19 @@ public class Flight {
 		this.arrivalPort = arrivalPort;
 	}
 
-	public LocalTime getDepartureTime() {
+	public LocalDateTime getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(LocalTime departureTime) {
+	public void setDepartureTime(LocalDateTime departureTime) {
 		this.departureTime = departureTime;
 	}
 
-	public LocalTime getArrivalTime() {
+	public LocalDateTime getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(LocalTime arrivalTime) {
+	public void setArrivalTime(LocalDateTime arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
